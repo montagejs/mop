@@ -40,12 +40,8 @@ Depends on:
 -	Various packages in NPM
 
 ```
-$ sudo npm install -g .
+$ sudo npm install mop -g
 ```
-
-'(The last two can be condensed to `sudo npm install -g
-montage-optimizer`, but the lines are separated to be clear that Mop
-is not presently available in the NPM registry.
 
 Mop also depends on Node v0.6, but one of its dependencies broke on
 v0.6.11.  If Mop does not work for you, get

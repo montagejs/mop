@@ -1,0 +1,51 @@
+{
+  "name": "mop",
+  "version": "0.0.2",
+  "dependencies": {
+    "q": {
+      "version": "0.8.8"
+    },
+    "q-fs": {
+      "version": "0.1.32",
+      "dependencies": {
+        "q-io": {
+          "version": "0.0.15"
+        },
+        "fs-boot": {
+          "version": "0.0.8"
+        }
+      }
+    },
+    "uglify-js": {
+      "version": "1.0.7"
+    },
+    "optimist": {
+      "version": "0.2.6",
+      "dependencies": {
+        "wordwrap": {
+          "version": "0.0.2"
+        }
+      }
+    },
+    "jsdom": {
+      "version": "0.2.10",
+      "dependencies": {
+        "htmlparser": {
+          "version": "1.7.6"
+        },
+        "request": {
+          "version": "2.10.0"
+        },
+        "contextify": {
+          "version": "0.0.7"
+        }
+      }
+    },
+    "cssom": {
+      "version": "0.2.0"
+    },
+    "html-minifier": {
+      "version": "0.4.5"
+    }
+  }
+}
