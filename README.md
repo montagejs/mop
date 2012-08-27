@@ -9,15 +9,26 @@ Optimizes Montage applications for production.
     -   JavaScript minification using UglifyJS (including script
         blocks)
     -   HTML minification using JSDOM
-    -   CSS using CSSOM (planning to include style blocks)
-    -   JSON (including ``application/javascript`` script blocks)
+    -   CSS using CSSOM (including style blocks)
+    -   JSON files
     -   Montage serialization minification (and precompilation is a
         goal) (including ``text/montage-serialization`` script
         blocks)
-    -   excludes unwanted development files from build products
     -   rewrites inter-package URL’s in HTML and CSS to use relative
         URL’s among the build products, regardless of where the
         dependencies are installed in development
+    -   converts all modules into scripts, suitable for script
+        injection, particularly for cross-origin dependencies and
+        Content Security Policies.
+    -   optionally bundles and shards applications
+        -   aggregates the bootstrapping files and the transitive
+            dependencies of each HTML file that has a `montage.js`
+            bootstrapping script into a single script that gets loaded
+            instead of `montage.js`
+        -   can produce a sequence of preloading bundles, to start
+            loading after the main application starts.  Each phase of
+            the preload sequence can be optionally split into parallel
+            downloads or "shards".
 -   optionally, lints whole applications
     -   using JSHint for JavaScript in individual files and script
         blocks
