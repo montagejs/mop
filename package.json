@@ -1,6 +1,6 @@
 {
     "name": "mop",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "title": "Montage Optimizer",
     "main": "optimize.js",
     "dependencies": {
@@ -8,7 +8,7 @@
         "q-fs": "0.1.x",
         "uglify-js": "1.0.x",
         "optimist": "0.2.x",
-        "jsdom": "0.2.x",
+        "jsdom": ">=0.2.15",
         "cssom": "0.2.x",
         "html-minifier": "0.4.x"
     },
