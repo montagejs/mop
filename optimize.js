@@ -51,7 +51,7 @@ function version() {
     .then(function (hash) {
         console.log(hash);
     })
-    .end();
+    .done();
 }
 
 var Q = require("q");
@@ -106,5 +106,5 @@ BUILD.build(argv._.length ? argv._ : ".", {
     engines: ["montage", "browser"],
     platform: "browser"
 })
-.end();
+.done();
 
