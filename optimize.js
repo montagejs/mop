@@ -39,12 +39,14 @@ var argv = Options
         //"m", "manifest",
         //"b", "bundle",
         "h", "help",
-        "v", "version"
+        "v", "version",
+        "css"
     ])
     .default("optimize", "1")
     .alias("o", "optimize")
     .default("delimiter", "@")
     .alias("d", "delimiter")
+    .default("css", true)
     .argv;
 
 if (argv.h || argv.help)
@@ -62,6 +64,7 @@ var buildLocation = argv.t || argv.target || "builds";
 var optimize = +argv.optimize;
 //var bundle = argv.b || argv.bundle;
 var delimiter = argv.delimiter;
+var noCss = !argv.css;
 
 var currentLocation = URL.format({
     protocol: "file:",
@@ -83,6 +86,7 @@ build(location, {
     //shared: !!shared,
     //manifest: !!manifest,
     //force: !!force,
+    noCss: noCss,
     delimiter: delimiter,
     overlays: ["browser"]
 })

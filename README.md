@@ -88,6 +88,9 @@ and known JSON schemas.
 package names and package hashes in the builds directory, which is ``@``
 by default.
 
+``--no-css`` allows you to disable CSS transforms.  CSSOM cannot handle
+some modern CSS.
+
 Your project will be assembled in the builds directory.
 
 
