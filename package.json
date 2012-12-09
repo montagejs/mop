@@ -1,16 +1,21 @@
 {
     "name": "mop",
-    "version": "0.0.6",
+    "version": "0.12.0",
     "title": "Montage Optimizer",
     "main": "optimize.js",
     "dependencies": {
-        "q": "0.8.x",
-        "q-fs": "0.1.x",
-        "uglify-js": "1.0.x",
-        "optimist": "0.2.x",
-        "jsdom": ">=0.2.15",
-        "cssom": "0.2.x",
-        "html-minifier": "0.4.x"
+        "montage": "0.12.2 - 0.13",
+        "mr": "0.12 - 0.13",
+        "collections": "0.1 - 0.2",
+        "q": "0.8 - 0.9",
+        "q-io": "1.2 - 2",
+        "url2": "0.0.0 - 0.1",
+        "semver": "1.1.1 - 2",
+        "uglify-js": "1 - 2",
+        "optimist": "0.2 - 0.3",
+        "jsdom": "0.2.15 - 0.3",
+        "cssom": "0.2 - 0.3",
+        "html-minifier": "0.4 - 0.5"
     },
     "exclude": [
         "builds"

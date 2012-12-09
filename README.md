@@ -68,12 +68,12 @@ your current working directory.
 
 Usage:
 
-	mop [-lfc] [-d @] [--target <build-dir>] [<appdir-1> [<appdir-2> ...]]
+	mop [-lfc] [-d @] [--target <build-dir>] <source-package>
 
 e.g,
 
-	$ mop calculator clock
-	$ mop -t builds calculator clock
+	$ mop calculator
+	$ mop -t builds calculator
 
 ``-t`` or ``--target`` changes the default target build directory.
 The default is ``builds`` relative to the current working directory.
@@ -84,17 +84,14 @@ The default is ``builds`` relative to the current working directory.
 not pass JSLint or various other sanity checks like script MIME types
 and known JSON schemas.
 
-``-c`` or ``--copyright`` provides per-file warnings if no copyright
-notice is mentioned.
-
-``-f`` or ``--force`` forces a fresh build (and thus linting).
-
 ``-d`` or ``--delimiter`` allows you to override the symbol used between
 package names and package hashes in the builds directory, which is ``@``
 by default.
 
-Your project will be assembled in the builds directory, complete with a
-``package.json`` and ``appcache.manifest`` files.
+``--no-css`` allows you to disable CSS transforms.  CSSOM cannot handle
+some modern CSS.
+
+Your project will be assembled in the builds directory.
 
 
 Package JSON
@@ -111,19 +108,6 @@ For a comprehensive view of what can be in a ``package.json``, see the
 For the purpose of the build system, the following properties are
 important:
 
--   ``mappings``: is an object that links local module identifier name
-    spaces to the modules in another package.  At run-time it is
-    useful for linking.  At build time, it is useful for discovering
-    dependencies.  The build system requires the location values to be
-    relative directory paths from the current package to the
-    dependency package.
-
-        {
-            "mappings": {
-                "montage": "../m-js/"
-            }
-        }
-
 -   ``dependencies``: In the presence of a ``dependencies`` property,
     the build system assumes that the package was designed for NPM and
     that its dependencies were locally installed by NPM.  That means
@@ -132,15 +116,25 @@ important:
     ``mappings``, assuming that the package is in ``node_modules``, or
     the directory specified by ``directories.packages``.
 
+-   ``mappings``: A more flexible dependency management block.  The
+    local module identifier can be different than the registered package
+    name.  The dependency can have `location`, `name`, `version`, and
+    `hash` properties.  If the dependency is a string, it is coerced to
+    an object with a location property.
+
+    If a mapping has the same name as a dependency, the mapping
+    overrides the dependency at run-time, but NPM will only use the
+    `dependencies` block to install.
+
+        {
+            "mappings": {
+                "montage": "../montage/"
+            }
+        }
+
 -   ``bundle``: For application packages, configures how the optimizer
     will bundle modules so that they can be downloaded by the browser
     with HTTP requests.
-
-    -   ``true``: turns on bundling.  This causes a single bundle to be
-        created for each application HTML file that has a `<script
-        src="montage.js">`.  This bundle includes everything Montage
-        needs to get started, plus the transitive (deep) dependencies of
-        the containing HTML file.
 
     -   An array turns on bundling as above, but also sets up a
         prioritized preloading sequence.  Each element of the array
@@ -197,7 +191,13 @@ important:
 -   ``manifest``: For application packages, instructs the optimizer to
     generate an appcache manifest.  The manifest will contain all of the
     resources in an all used packages except those explicitly excluded
-    in each package.
+    in each package.  The `manifest` property can be either `true` or an
+    object with additional configuration for manifests.
+
+    -   ``fallback`` is an object that causes the browser to redirect
+        from a network URL to a cached URL when the browser is offline.
+        These get incorporated in the generated HTML5 appcache manifest
+        under the ``FALLBACK:`` section.
 
 -   ``exclude``: A list of glob patterns for files and directory trees
     in the package, relative to the package root, that must not be
@@ -214,8 +214,4 @@ important:
                 "docs"
             ]
         }
-
--   ``fallback``: A record of what URLs are remapped if an application
-    is offline.  These get incorporated in the generated HTML5
-    appcache manifest under the ``FALLBACK:`` section.
 
