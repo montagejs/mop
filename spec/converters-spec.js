@@ -20,7 +20,7 @@ describe("Converters", function () {
         var buffer = new Buffer("<!doctype html><h1>Hello</h1>", "utf8");
         var document = Converters.from(buffer, "buffer").to("document").content;
         var string = Converters.from(document, "document").to("utf8").content;
-        expect(string).toBe("<!doctype html><h1>Hello</h1>");
+        expect(string.trim()).toBe("<!doctype html><h1>Hello</h1>");
     });
 
 });
