@@ -4,18 +4,18 @@
     "title": "Montage Optimizer",
     "main": "optimize.js",
     "dependencies": {
-        "montage": "0.12.2 - 0.13",
-        "mr": "0.12 - 0.13",
-        "collections": "0.1 - 0.2",
-        "q": "0.8 - 0.9",
-        "q-io": "1.5 - 2",
-        "url2": "0.0.0 - 0.1",
-        "semver": "1.1.1 - 2",
-        "uglify-js": "1 - 2",
-        "optimist": "0.2 - 0.3",
-        "jsdom": "0.2.15 - 0.3",
-        "cssom": "0.2 - 0.3",
-        "html-minifier": "0.4 - 0.5"
+        "montage": "~0.12.2",
+        "mr": "~0.12.0",
+        "collections": "~0.1.0",
+        "q": "~0.8.11",
+        "q-io": "~1.5",
+        "url2": "~0.0.0",
+        "semver": "~1.1",
+        "uglify-js": "~1",
+        "optimist": "~0.2.8",
+        "jsdom": "~0.2.15",
+        "cssom": "~0.2.5",
+        "html-minifier": "~0.4.5"
     },
     "exclude": [
         "builds"
