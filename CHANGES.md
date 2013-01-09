@@ -1,7 +1,22 @@
+# 0.12.2
 
-# Next
+-   Fixed handling of "exclude" property in package.json.
+
+# 0.12.1
+
+-   Extensive refactor for Montage and Mr v0.12.
+-   Mop now requires Montage > v0.12.2 or Mr > v0.12.0.
+-   Bundling is no longer optional.
+-   Incremental builds and shared build dependencies are no longer supported.
+-   More internal changes. See
+    https://github.com/montagejs/mop/commit/aa1368d40e20306217dec82def6d9e27832ebafa
+
+# 0.0.7
 
 -   Fixed file descriptor limit
+-   Update for Q.done and improve some error messages.
+-   Removed shrinkwrap.
+-   Updated the documented transforms.
 
 # 0.0.4
 
