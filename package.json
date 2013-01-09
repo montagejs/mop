@@ -3,6 +3,9 @@
   "version": "0.12.1",
   "title": "Montage Optimizer",
   "main": "optimize.js",
+  "scripts": {
+    "test": "jasmine-node spec"
+  },
   "dependencies": {
     "montage": "~0.12.2",
     "mr": "~0.12.0",
@@ -16,6 +19,9 @@
     "jsdom": "~0.2.15",
     "cssom": "~0.2.5",
     "html-minifier": "~0.4.5"
+  },
+  "devDependencies": {
+    "jasmine-node": "1.0.x"
   },
   "exclude": [
     "builds"
