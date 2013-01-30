@@ -88,7 +88,8 @@ build(location, {
     //force: !!force,
     noCss: noCss,
     delimiter: delimiter,
-    overlays: ["browser"]
+    overlays: ["browser"],
+    production: true
 })
 .done();
 
