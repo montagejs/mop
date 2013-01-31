@@ -136,7 +136,7 @@ function main() {
     .done();
 }
 
-if (!module.parent) {
+if (module === require.main) {
     main();
 }
 
