@@ -27,13 +27,12 @@ Error.stackTraceLimit = 50;
  * @param {string}  [config.delimiter="@"] Symbol to use between the package
  * name and the package hash, e.g. my-app@f7e7db2
  * @param {Object}  [config.out=console] An object to use for logging.
- * @param {Function} config.out.log Variadic function that outputs a normal message.
- * @param {Function} config.out.warn Variadic function that outputs a warning.
- * @param {Function} config.out.status Variadic function that outputs a status
+ * @param {Function} [config.out.log] Variadic function that outputs a normal message.
+ * @param {Function} [config.out.warn] Variadic function that outputs a warning.
+ * @param {Function} [config.out.status] Variadic function that outputs a status
  * message. These messages are temporary, high volume and should not be
  * permanently displayed. If called with no arguments it should clear the
  * displayed status.
- *
  */
 module.exports = optimize;
 function optimize(location, config) {
