@@ -7,6 +7,7 @@ All Rights Reserved.
 
 var URL = require("url2");
 var build = require("./lib/build");
+var spinner = require("./lib/spinner");
 
 Error.stackTraceLimit = 50;
 
@@ -23,8 +24,16 @@ Error.stackTraceLimit = 50;
  * warnings.
  * @param {boolean} [config.noCss=true] Whether to optimize CSS. Cannot handle
  * some modern CSS, and so disabled by default.
- * @param {string} [config.delimiter="@"] Symbol to use between the package
+ * @param {string}  [config.delimiter="@"] Symbol to use between the package
  * name and the package hash, e.g. my-app@f7e7db2
+ * @param {Object}  [config.out=console] An object to use for logging.
+ * @param {Function} config.out.log Variadic function that outputs a normal message.
+ * @param {Function} config.out.warn Variadic function that outputs a warning.
+ * @param {Function} config.out.status Variadic function that outputs a status
+ * message. These messages are temporary, high volume and should not be
+ * permanently displayed. If called with no arguments it should clear the
+ * displayed status.
+ *
  */
 module.exports = optimize;
 function optimize(location, config) {
@@ -36,6 +45,13 @@ function optimize(location, config) {
         pathname: directory(location)
     });
 
+    config.out = config.out || {};
+    var out = {
+        log: config.out.log || spinner.log,
+        warn: config.out.warn || spinner.warn,
+        status: config.out.status || (process.stdout.isTTY ? spinner.status : function(){})
+    };
+
     return build(location, {
         // configurable
         buildLocation: URL.resolve(location, directory(config.buildLocation || "builds")),
@@ -43,6 +59,7 @@ function optimize(location, config) {
         lint:       config.lint !== void 0 ? !!config.lint          : false,
         noCss:      config.noCss !== void 0 ? !!config.noCss        : true,
         delimiter:  config.delimiter !== void 0 ? config.delimiter  : "@",
+        out: out,
 
         // non-configurable
         overlays: ["browser"],
