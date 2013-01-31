@@ -26,7 +26,7 @@ Error.stackTraceLimit = 50;
  * some modern CSS, and so disabled by default.
  * @param {string}  [config.delimiter="@"] Symbol to use between the package
  * name and the package hash, e.g. my-app@f7e7db2
- * @param {Object}  [config.out=console] An object to use for logging.
+ * @param {Object}  [config.out=spinner] An object to use for logging.
  * @param {Function} [config.out.log] Variadic function that outputs a normal message.
  * @param {Function} [config.out.warn] Variadic function that outputs a warning.
  * @param {Function} [config.out.status] Variadic function that outputs a status
@@ -44,12 +44,12 @@ function optimize(location, config) {
         pathname: directory(location)
     });
 
-    config.out = config.out || {};
-    var out = {
-        log: config.out.log || spinner.log,
-        warn: config.out.warn || spinner.warn,
-        status: config.out.status || (process.stdout.isTTY ? spinner.status : function(){})
-    };
+    if (config.out) {
+        // Fill in any missing output functions
+        if (!config.out.log) config.out.log = noop;
+        if (!config.out.warn) config.out.warn = noop;
+        if (!config.out.status) config.out.status = noop;
+    }
 
     return build(location, {
         // configurable
@@ -58,7 +58,7 @@ function optimize(location, config) {
         lint:       config.lint !== void 0 ? !!config.lint          : false,
         noCss:      config.noCss !== void 0 ? !!config.noCss        : true,
         delimiter:  config.delimiter !== void 0 ? config.delimiter  : "@",
-        out: out,
+        out:        config.out                                      || spinner,
 
         // non-configurable
         overlays: ["browser"],
@@ -151,6 +151,8 @@ function main() {
     })
     .done();
 }
+
+function noop() {}
 
 if (module === require.main) {
     main();
