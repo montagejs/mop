@@ -1,5 +1,31 @@
 
-Optimizes Montage applications for production.
+Montage Optimizer
+=================
+
+Optimizes Montage applications for production by minifying, to reduce file
+size, and creating bundles, to reduce the number of requests.
+
+Install Mop globally with NPM.
+
+```
+npm install -g mop
+```
+
+Mop can be run in any directory containing a Montage application.
+
+```bash
+$ ls
+index.html    node_modules/ package.json  ui/
+$ ls node_modules/
+montage/
+$ mop
+# performs reading, processing and bundling steps
+$ ls builds/
+my-app        my-app@f7e7db2/
+```
+
+Features
+========
 
 -   writes whole packages into an incrementally updated builds
     directory, giving each package a consistent hash
@@ -41,25 +67,7 @@ Optimizes Montage applications for production.
 -   operates holistically on a package and all of its dependencies
 
 
-INSTALL
-=======
-
-Depends on:
-
--	node <http://nodejs.org/>
--	NPM <http://npmjs.org/>
--	Various packages in NPM
-
-```
-$ sudo npm install mop -g
-```
-
-Mop also depends on Node v0.6, but one of its dependencies broke on
-v0.6.11.  If Mop does not work for you, get
-[v0.6.10](http://nodejs.org/dist/v0.6.10/) or v0.6.>=12.
-
-
-USAGE
+Usage
 =====
 
 Creates a ``builds`` directory from one or more applications, packages,
