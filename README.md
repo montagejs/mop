@@ -102,6 +102,35 @@ some modern CSS.
 Your project will be assembled in the builds directory.
 
 
+API
+---
+
+```javascript
+var optimize = require("mop");
+
+optimize(process.cwd()).then(function () {
+    console.log("Optimization done.");
+});
+```
+
+### optimize(location, [config])
+
+Optimize the package at the given location.
+
+ * location `string` An absolute path to a directory containing an app
+to optimize.
+ * [config] `Object` Configuration for optimization.
+     * [buildLocation="builds"] `string` An absolute or relative path for a directory to generate the optimized files in.
+     * [minify=true] `boolean` Whether to minify the files.
+     * [lint=false] `boolean` Whether to lint the files and output warnings.
+     * [noCss=true] `boolean` Whether to optimize CSS. Cannot handle some modern CSS, and so disabled by default.
+     * [delimiter="@"] `string` Symbol to use between the package name and the package hash, e.g. `my-app@f7e7db2`
+     * [out=spinner] `Object` An object to use for logging.
+         * [log] `Function` Variadic function that outputs a normal message.
+         * [warn] `Function` Variadic function that outputs a warning.
+         * [status] `Function` Variadic function that outputs a status message. These messages are temporary, high volume and should not be permanently displayed. If called with no arguments it should clear the displayed status.
+
+
 Package JSON
 ============
 
