@@ -1,3 +1,11 @@
+# 0.12.3
+
+ - Important: requires Mr ~0.12.6 to be used by packages.
+ - Enabled production mode when optimizing to prevent devDependencies being
+   loaded.
+ - Exposed the `optimize` function as the exports of the package. See the
+   readme for the API.
+
 # 0.12.2
 
 -   Fixed handling of "exclude" property in package.json.
