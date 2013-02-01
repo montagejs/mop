@@ -1,6 +1,6 @@
 {
   "name": "mop",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "title": "Montage Optimizer",
   "main": "optimize.js",
   "scripts": {
