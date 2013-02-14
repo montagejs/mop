@@ -85,6 +85,7 @@ function usage() {
     //console.log("    -c --copyright to enable copyright message check");
     //console.log("    -m --manifest to force an application cache to be made");
     console.log("    -d --delimiter @ to use a different symbol");
+    console.log("    -c --css to enable CSS compression. Breaks browser prefixes");
     console.log("");
 }
 
@@ -124,7 +125,8 @@ function main() {
     .alias("o", "optimize")
     .default("delimiter", "@")
     .alias("d", "delimiter")
-    .default("css", true)
+    .default("css", false)
+    .alias("c", "css")
     .argv;
 
     if (argv.h || argv.help)
