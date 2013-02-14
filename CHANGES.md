@@ -1,3 +1,9 @@
+# 0.12.4
+
+ - Disable CSS compression by default as it breaks unrecognized syntax, most
+   notably browser prefixes.
+ - Add --css/-c flag to enable CSS compression.
+
 # 0.12.3
 
  - Important: requires Mr ~0.12.6 to be used by packages.
