@@ -7,7 +7,7 @@
     "test": "jasmine-node spec"
   },
   "dependencies": {
-    "montage": "~0.12.2",
+    "montage": "git+ssh://git@github.com:montagejs/montage.git#edge",
     "mr": "~0.12.6",
     "collections": "~0.1.0",
     "q": "~0.8.11",
