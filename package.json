@@ -6,7 +6,7 @@
   },
   "main": "optimize.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node spec"
+    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/jasmine-node -- spec"
   },
   "dependencies": {
     "montage": "0.13.0-alpha",
@@ -24,7 +24,8 @@
   },
   "devDependencies": {
     "jasmine-node": "~1.5.0",
-    "sandboxed-module": "~0.1.4"
+    "sandboxed-module": "~0.1.4",
+    "istanbul": "~0.1.34"
   },
   "exclude": [
     "builds"
