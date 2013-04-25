@@ -1,4 +1,3 @@
-
 Montage Optimizer
 =================
 
@@ -101,6 +100,19 @@ some modern CSS.
 
 Your project will be assembled in the builds directory.
 
+### Notes
+
+The bootstrap bundle Mop creates is usually large, as it contains the
+bootrapping code and the initial modules and all their dependencies. To
+avoid the download of this file blocking the rendering of your page make
+sure to include the `async` attribute in the bootstrap script tag:
+
+```html
+<!-- Mr -->
+<script src="node_modules/mr/bootstrap.js" data-module="index" async></script>
+<!-- Montage -->
+<script src="node_modules/montage/montage.js" async></script>
+```
 
 API
 ---
