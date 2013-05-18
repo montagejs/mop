@@ -1,6 +1,7 @@
 {
   "name": "mop",
   "version": "0.13.0-alpha",
+  "description": "Optimizes Montage applications for production",
   "publishConfig": {
     "tag": "edge"
   },
