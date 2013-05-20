@@ -9,7 +9,8 @@ var URL = require("url2");
 var build = require("./lib/build");
 var spinner = require("./lib/spinner");
 
-Error.stackTraceLimit = 50;
+var Q = require("q");
+Q.longStackJumpLimit = 0;
 
 /**
  * Optimize the package at the given location.
