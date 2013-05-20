@@ -225,10 +225,10 @@ important:
     packing algorithm to evenly distribute the modules among these
     bundles.
 
--   ``manifest``: For application packages, instructs the optimizer to
+-   ``appcache``: For application packages, instructs the optimizer to
     generate an appcache manifest.  The manifest will contain all of the
     resources in an all used packages except those explicitly excluded
-    in each package.  The `manifest` property can be either `true` or an
+    in each package.  The `appcache` property can be either `true` or an
     object with additional configuration for manifests.
 
     -   ``fallback`` is an object that causes the browser to redirect
@@ -238,10 +238,10 @@ important:
 
 -   ``exclude``: A list of glob patterns for files and directory trees
     in the package, relative to the package root, that must not be
-    included in a production build and its manifest.  These exclusions
-    may include ``*`` for zero or more wild card characters in a file
-    name, ``?`` for a single wild card character in a file name, or
-    ``**`` for recursive directory traversal.
+    included in a production build and its appcache manifest. These
+    exclusions may include ``*`` for zero or more wild card characters
+    in a file name, ``?`` for a single wild card character in a file
+    name, or ``**`` for recursive directory traversal.
 
         {
             "exclude": [
