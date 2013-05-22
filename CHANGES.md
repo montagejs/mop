@@ -1,3 +1,12 @@
+# 0.12.5
+
+ - Browser prefixes are no longer removed when compressing CSS, as a result of
+   replacing CSSOM with CSSO.
+ - HTML doctype is preserved.
+ - Fix rebasing of URLs with no protocol.
+ - Fix bundle loading.
+ - Don't warn about WebGL script tags.
+
 # 0.12.4
 
  - Disable CSS compression by default as it breaks unrecognized syntax, most
