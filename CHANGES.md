@@ -1,3 +1,10 @@
+# 0.12.6
+
+ - Keep properties from original package.json in bundled package.json
+ - Don't change markup when incorrectly nested, as a result of upgrading
+   html-minifier and other dependencies.
+ - Add coverage reporting to tests
+
 # 0.12.5
 
  - Browser prefixes are no longer removed when compressing CSS, as a result of
