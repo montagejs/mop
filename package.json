@@ -1,13 +1,16 @@
 {
   "name": "mop",
-  "version": "0.12.5",
   "title": "Montage Optimizer",
+  "version": "0.13.0-alpha",
+  "publishConfig": {
+    "tag": "edge"
+  },
   "main": "optimize.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node spec"
+    "test": "istanbul test jasmine-node -- spec"
   },
   "dependencies": {
-    "montage": "~0.12.2",
+    "montage": "0.13.0-alpha",
     "mr": "~0.12.6",
     "collections": "~0.1.0",
     "q": "~0.8.11",
@@ -21,8 +24,9 @@
     "html-minifier": "~0.4.5"
   },
   "devDependencies": {
-    "jasmine-node": "1.0.x",
-    "sandboxed-module": "0.1.4"
+    "jasmine-node": "~1.5.0",
+    "sandboxed-module": "~0.1.4",
+    "istanbul": "~0.1.34"
   },
   "exclude": [
     "builds"
