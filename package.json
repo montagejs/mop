@@ -1,10 +1,7 @@
 {
   "name": "mop",
+  "version": "0.12.5",
   "title": "Montage Optimizer",
-  "version": "0.13.0-alpha",
-  "publishConfig": {
-    "tag": "edge"
-  },
   "description": "Optimizes Montage applications for production by minifying, to reduce file size, and creating bundles, to reduce the number of requests.",
   "keywords": ["montage", "optimization", "production"],
   "main": "optimize.js",
@@ -12,7 +9,7 @@
     "test": "istanbul test jasmine-node -- spec"
   },
   "dependencies": {
-    "montage": "0.13.0-alpha",
+    "montage": "~0.12.2",
     "mr": "~0.12.6",
     "collections": "~0.1.0",
     "q": "~0.9.4",
