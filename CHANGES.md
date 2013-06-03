@@ -1,3 +1,8 @@
+# 0.12.7
+
+ - Fix converting a document without a doctype to string
+ - Continue when errors occur minifiying inline JavaScript
+
 # 0.12.6
 
  - Keep properties from original package.json in bundled package.json
