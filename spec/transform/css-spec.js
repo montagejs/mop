@@ -14,7 +14,10 @@ describe("transform/css", function () {
     var fileMock;
     beforeEach(function () {
         fileMock = {
-            path: "test.css"
+            path: "test.css",
+            package: {
+                isMainPackage: function () { return true; }
+            }
         };
     });
 
@@ -25,7 +28,7 @@ describe("transform/css", function () {
     });
 
     it("warns on invalid CSS", function () {
-        var input = "}";
+        var input = "\n}";
         var warnings = [];
         var config = {
             out: {
@@ -37,7 +40,7 @@ describe("transform/css", function () {
 
         var output = rebaseCss(input, fileMock, config);
         expect(output).toBe(input);
-        expect(warnings[0]).toBe("CSS parse error: test.css");
+        expect(warnings[0]).toBe("CSS parse error in test.css: Please check the validity of the CSS block starting from the line #2");
     });
 
     it("rebases single-quoted URIs", function () {
