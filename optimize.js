@@ -57,7 +57,7 @@ function optimize(location, config) {
         buildLocation: URL.resolve(location, directory(config.buildLocation || "builds")),
         minify:     config.minify !== void 0 ? !!config.minify      : true,
         lint:       config.lint !== void 0 ? !!config.lint          : false,
-        noCss:      config.noCss !== void 0 ? !!config.noCss        : true,
+        noCss:      config.noCss !== void 0 ? !!config.noCss        : false,
         delimiter:  config.delimiter !== void 0 ? config.delimiter  : "@",
         out:        config.out                                      || spinner,
 
@@ -86,7 +86,7 @@ function usage() {
     //console.log("    -c --copyright to enable copyright message check");
     //console.log("    -m --manifest to force an application cache to be made");
     console.log("    -d --delimiter @ to use a different symbol");
-    console.log("    -c --css to enable CSS compression. Breaks browser prefixes");
+    console.log("       --no-css to disable CSS compression.");
     console.log("");
 }
 
@@ -126,8 +126,7 @@ function main() {
     .alias("o", "optimize")
     .default("delimiter", "@")
     .alias("d", "delimiter")
-    .default("css", false)
-    .alias("c", "css")
+    .default("css", true)
     .argv;
 
     if (argv.h || argv.help)
