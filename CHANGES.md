@@ -1,3 +1,7 @@
+# 0.12.8
+
+ - Lock Q to version 0.9.2 to match Mr and avoid compatibility issues
+
 # 0.12.7
 
  - Fix converting a document without a doctype to string
