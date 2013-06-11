@@ -1,3 +1,12 @@
+# 0.13.0
+
+ - Breaking change: change package.json "manifest" prop to "appcache", as it
+   conflicts with the manifest property in Montage.
+ - Enable CSS compression by default
+ - Make compatible with bootstrapping of Montage 0.13
+ - Improve JavaScript parse warning messages
+ - Numerous dependency version bumps
+
 # 0.12.7
 
  - Fix converting a document without a doctype to string
