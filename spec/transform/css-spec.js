@@ -24,6 +24,12 @@ describe("transform/css", function () {
         expect(output).toBe(input);
     });
 
+    it("handles an empty CSS file", function () {
+        var input = "";
+        var output = rebaseCss(input, {}, {});
+        expect(output).toBe(input);
+    });
+
     it("warns on invalid CSS", function () {
         var input = "}";
         var warnings = [];
