@@ -1,6 +1,6 @@
 {
   "name": "mop",
-  "version": "0.12.7",
+  "version": "0.13.0-alpha",
   "title": "Montage Optimizer",
   "description": "Optimizes Montage applications for production by minifying, to reduce file size, and creating bundles, to reduce the number of requests.",
   "keywords": [
@@ -13,14 +13,14 @@
     "test": "istanbul test jasmine-node -- spec"
   },
   "dependencies": {
-    "montage": "~0.12.2",
+    "montage": "0.13.0-alpha",
     "mr": "~0.12.6",
     "collections": "~0.1.0",
     "q": "~0.9.4",
     "q-io": "~1.6.6",
     "url2": "~0.0.0",
     "semver": "~1.1.4",
-    "uglify-js": "~1",
+    "uglify-js": "~2.2.5",
     "optimist": "~0.5.0",
     "jsdom": "~0.6.5",
     "csso": "~1.3.7",
