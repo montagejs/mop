@@ -1,6 +1,6 @@
 {
   "name": "mop",
-  "version": "0.13.0-alpha",
+  "version": "0.13.0",
   "title": "Montage Optimizer",
   "description": "Optimizes Montage applications for production by minifying, to reduce file size, and creating bundles, to reduce the number of requests.",
   "keywords": [
@@ -13,7 +13,7 @@
     "test": "istanbul test jasmine-node -- spec"
   },
   "dependencies": {
-    "montage": "0.13.0-alpha",
+    "montage": "~0.13.0",
     "mr": "~0.12.6",
     "collections": "~0.1.0",
     "q": "0.9.2",
