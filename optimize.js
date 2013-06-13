@@ -9,9 +9,6 @@ var URL = require("url2");
 var build = require("./lib/build");
 var spinner = require("./lib/spinner");
 
-var Q = require("q");
-Q.longStackJumpLimit = 0;
-
 /**
  * Optimize the package at the given location.
  * @function
