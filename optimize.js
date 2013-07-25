@@ -57,6 +57,7 @@ function optimize(location, config) {
         noCss:      config.noCss !== void 0 ? !!config.noCss        : false,
         delimiter:  config.delimiter !== void 0 ? config.delimiter  : "@",
         out:        config.out                                      || spinner,
+        fs:         config.fs                                       || require("q-io/fs"),
 
         // non-configurable
         overlays: ["browser"],
