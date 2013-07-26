@@ -49,6 +49,13 @@ function optimize(location, config) {
         if (!config.out.status) config.out.status = noop;
     }
 
+    // mainly here so that fs can be mocked out for testing
+    var fs = config.fs || require("q-io/fs");
+    function read(location) {
+        var path = URL.parse(location).pathname;
+        return fs.read(path);
+    }
+
     return build(location, {
         // configurable
         buildLocation: URL.resolve(location, directory(config.buildLocation || "builds")),
@@ -57,7 +64,9 @@ function optimize(location, config) {
         noCss:      config.noCss !== void 0 ? !!config.noCss        : false,
         delimiter:  config.delimiter !== void 0 ? config.delimiter  : "@",
         out:        config.out                                      || spinner,
-        fs:         config.fs                                       || require("q-io/fs"),
+
+        fs:         fs,
+        read:       read,
 
         // non-configurable
         overlays: ["browser"],
