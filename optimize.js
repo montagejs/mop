@@ -31,6 +31,8 @@ var spinner = require("./lib/spinner");
  * message. These messages are temporary, high volume and should not be
  * permanently displayed. If called with no arguments it should clear the
  * displayed status.
+ * @return {Promise.<string>} A promise for the absolute path to the directory
+ * containing the built app.
  */
 module.exports = optimize;
 function optimize(location, config) {
