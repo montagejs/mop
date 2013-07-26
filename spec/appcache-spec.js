@@ -1,9 +1,9 @@
 /*global describe,before,it,expect,after */
-
 var appcache = require("../lib/appcache");
+var MockFs = require("q-io/fs-mock");
 
 describe("Appcache", function() {
-    var appPackage, config;
+    var appPackage, config, mockFs;
     beforeEach(function () {
         appPackage = {
             hash: "xxx",
@@ -13,6 +13,7 @@ describe("Appcache", function() {
             }
         };
         config = {
+            fs: MockFs(),
             files: {
                 "index.html": {
                     buildLocation: "file:///build/index.html"
