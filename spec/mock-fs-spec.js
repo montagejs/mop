@@ -25,4 +25,15 @@ describe("Mock FS", function () {
         })
         .then(done, done);
     });
+
+    it("returns the build path", function (done) {
+        optimize("/", {
+            fs: mockFs,
+            out: {} // disable console output
+        })
+        .then(function (path) {
+            expect(path).toMatch(/^\/builds\/mock@[0-9a-f]{7}$/);
+        })
+        .then(done, done);
+    });
 });
