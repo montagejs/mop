@@ -1,11 +1,15 @@
 /*global describe,beforeEach,it,expect */
-
 var transformHtml = require('../../lib/transform/html');
 var minifyHtml = require("html-minifier").minify;
+var MockFs = require("q-io/fs-mock");
 
 var File = require("../../lib/file");
 
 describe("transform/html", function () {
+    var mockFs;
+    beforeEach(function () {
+        mockFs = MockFs();
+    });
 
     it("doesn't change incorrectly nested html", function () {
         var original = '<a href="#"><p>text</p></a>';
@@ -16,6 +20,7 @@ describe("transform/html", function () {
         var original = '<script>function</script><p>text</p>';
 
         var file = new File({
+            fs: mockFs,
             utf8: original,
             package: {
                 getPackage: function() {
@@ -30,7 +35,8 @@ describe("transform/html", function () {
             out: {
                 warn: function() {}
             },
-            files: {}
+            files: {},
+            fs: mockFs
         };
 
         transformHtml(file, config);
