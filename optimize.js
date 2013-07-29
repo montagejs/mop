@@ -46,9 +46,15 @@ function optimize(location, config) {
 
     if (config.out) {
         // Fill in any missing output functions
-        if (!config.out.log) config.out.log = noop;
-        if (!config.out.warn) config.out.warn = noop;
-        if (!config.out.status) config.out.status = noop;
+        if (!config.out.log) {
+            config.out.log = noop;
+        }
+        if (!config.out.warn) {
+            config.out.warn = noop;
+        }
+        if (!config.out.status) {
+            config.out.status = noop;
+        }
     }
 
     // mainly here so that fs can be mocked out for testing
@@ -138,10 +144,12 @@ function main() {
     .default("css", true)
     .argv;
 
-    if (argv.h || argv.help)
+    if (argv.h || argv.help) {
         return usage();
-    if (argv.v || argv.version)
+    }
+    if (argv.v || argv.version) {
         return version();
+    }
 
     //var force = argv.f || argv.force;
     //var shared = argv.s || argv.shared;
