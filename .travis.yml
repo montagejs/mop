@@ -1,3 +1,13 @@
 language: node_js
 node_js:
-  - "0.8"
+  - "0.10"
+script: npm run $COMMAND
+env:
+  - COMMAND=test
+  - COMMAND=integration MOP_VERSION=. MR_VERSION=0.13
+  - COMMAND=integration MOP_VERSION=. MR_VERSION=latest
+  - COMMAND=integration MOP_VERSION=. MR_VERSION="#master"
+# Re-enable once Montage works on Phantom JS
+#   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=0.13
+#   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=latest
+#   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION="#master"
