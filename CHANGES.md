@@ -1,6 +1,19 @@
+### 0.13.2
+
+ - Don't warn about module/filename case in dependencies
+
+**API**
+
+ - Return build path from main `optimize` function
+ - Add `fs` to config object, so that that a mock FS can be injected for
+   testing
+
 ### 0.13.1
 
  - Only support Mr ~0.13.0
+
+**API**
+
  - Update to Q v0.9.6
 
 ## 0.13.0
@@ -10,6 +23,9 @@
  - Enable CSS compression by default
  - Make compatible with bootstrapping of Montage 0.13
  - Improve JavaScript parse warning messages
+
+**API**
+
  - Numerous dependency version bumps
 
 ### 0.12.8
