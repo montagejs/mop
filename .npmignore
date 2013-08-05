@@ -1,6 +1,7 @@
 .gitignore
 .jshintignore
 .jshintrc
+.npmignore
 .travis.yml
 CHANGES.md
 coverage
