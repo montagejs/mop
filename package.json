@@ -14,7 +14,7 @@
     "integration": "mop-integration"
   },
   "dependencies": {
-    "montage": "~0.13.0",
+    "montage": "git://github.com/kriskowal/mop.git#build",
     "mr": "~0.13.0 || 0.12.14",
     "collections": "~0.1.0",
     "q": "0.9.6",
