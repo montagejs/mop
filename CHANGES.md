@@ -1,3 +1,8 @@
+### 0.13.3
+
+ - Don't include the npm-added `readme` property in the `package.json` of
+   built apps.
+
 ### 0.13.2
 
  - Don't warn about module/filename case in dependencies
