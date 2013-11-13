@@ -16,7 +16,8 @@ describe("reconfigure", function() {
                         "package.json": {}
                     },
                     packageDescription: {
-                        name: "a"
+                        name: "a",
+                        readme: "fail"
                     }
                 }
             }
@@ -28,6 +29,13 @@ describe("reconfigure", function() {
         expect(
             JSON.parse(appPackage.packages["a"].files["package.json"].utf8).name
         ).toBe("a");
+    });
+
+    it("removes the readme", function () {
+        reconfigure(appPackage);
+        expect(
+            JSON.parse(appPackage.packages["a"].files["package.json"].utf8).readme
+        ).toBeUndefined();
     });
 
     it("sets production to true", function () {
