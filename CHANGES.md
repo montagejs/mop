@@ -1,3 +1,7 @@
+### 0.13.4
+
+ - Bump Mr dependency to ~0.14.0
+
 ### 0.13.3
 
  - Don't include the npm-added `readme` property in the `package.json` of
