@@ -1,3 +1,8 @@
+### 0.13.5
+
+ - Fix independent modules creating different bundles
+ - Bump Mr dependency to ~0.14.2, to fix a bug with projects that use `overlay` in the `package.json`, such as Montage
+
 ### 0.13.4
 
  - Bump Mr dependency to ~0.14.0
