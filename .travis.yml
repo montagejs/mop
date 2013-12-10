@@ -10,3 +10,5 @@ env:
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=0.13
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=latest
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION="#master"
+notifications:
+  irc: "chat.freenode.net#montage"
