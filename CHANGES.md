@@ -1,3 +1,7 @@
+### 0.13.6
+
+ - Bump Mr dependency to ~0.15.0, to fix bug with modules with "." in them
+
 ### 0.13.5
 
  - Fix independent modules creating different bundles
