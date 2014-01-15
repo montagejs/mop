@@ -42,4 +42,32 @@ describe("transform/html", function () {
         transformHtml(file, config);
         expect(file.utf8).toEqual(original);
     });
+
+    it("sets correct filenames for transformed file", function () {
+        var original = '<p>text</p>';
+
+        var file = new File({
+            fs: mockFs,
+            utf8: original,
+            location: "test",
+            buildLocation: "build.html",
+            relativeLocation: "relative.html",
+            package: {
+                getPackage: function() {
+                    return { buildLocation: "" };
+                },
+                files: {}
+            }
+        });
+
+        var config = {
+            out: { warn: function() {} },
+            files: {},
+            fs: mockFs
+        };
+
+        transformHtml(file, config);
+        expect(config.files["test.load.js"].buildLocation).toEqual("build.html.load.js");
+        expect(config.files["test.load.js"].relativeLocation).toEqual("relative.html.load.js");
+    });
 });
