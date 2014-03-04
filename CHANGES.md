@@ -1,3 +1,9 @@
+
+
+### 0.14.0
+
+ - Companion release for MontageJS v0.14.
+
 ### 0.13.6
 
  - Bump Mr dependency to ~0.15.0, to fix bug with modules with "." in them
