@@ -3,6 +3,8 @@
 Montage Optimizer
 =================
 
+for **Montage** ~0.14.0 and **Mr** ~0.15.0, ~0.14.2 and ~0.13.0.
+
 Optimizes Montage applications for production by minifying, to reduce file
 size, and creating bundles, to reduce the number of requests.
 
