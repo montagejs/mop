@@ -7,13 +7,13 @@ env:
   - COMMAND=integration MOP_VERSION=. MR_VERSION=0.13
   - COMMAND=integration MOP_VERSION=. MR_VERSION=latest
   - COMMAND=integration MOP_VERSION=. MR_VERSION="#master"
-  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=0.13
+  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=0.14
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=latest
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION="#master"
 notifications:
-  irc: 
-    channels: 
+  irc:
+    channels:
       - "chat.freenode.net#montage"
     on_success: false
-    template: 
+    template:
       - "%{author} broke the %{repository} tests on %{branch}: %{build_url}"
