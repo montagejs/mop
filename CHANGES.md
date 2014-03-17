@@ -1,4 +1,6 @@
+### 0.14.1
 
+ - Update minimum version of montage.
 
 ### 0.14.0
 
