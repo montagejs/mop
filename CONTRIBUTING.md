@@ -14,6 +14,7 @@ Releasing
        nice to double check.
  * Docs
     - Update `CHANGES.md`
+    - Update supported Montage and Mr versions at the top of the `README.md`
  * Publish
      - `npm version patch` or other variation of `npm version`
      - `npm publish`
