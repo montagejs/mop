@@ -6,8 +6,10 @@ All Rights Reserved.
 </copyright> */
 
 var URL = require("url2");
+var Path = require("path");
 var build = require("./lib/build");
 var spinner = require("./lib/spinner");
+var Location = require("./lib/location");
 
 /**
  * Optimize the package at the given location.
@@ -38,11 +40,7 @@ module.exports = optimize;
 function optimize(location, config) {
     config = config || {};
 
-    location =  URL.format({
-        protocol: "file:",
-        slashes: true,
-        pathname: directory(location)
-    });
+    location =  Location.fromPath(location, true);
 
     if (config.out) {
         // Fill in any missing output functions
@@ -60,13 +58,13 @@ function optimize(location, config) {
     // mainly here so that fs can be mocked out for testing
     var fs = config.fs || require("q-io/fs");
     function read(location) {
-        var path = URL.parse(location).pathname;
+        var path = Location.toPath(location);
         return fs.read(path);
     }
 
     return build(location, {
         // configurable
-        buildLocation: URL.resolve(location, directory(config.buildLocation || "builds")),
+        buildLocation: URL.resolve(location, (config.buildLocation || "builds") + "/"),
         minify:     config.minify !== void 0 ? !!config.minify      : true,
         lint:       config.lint !== void 0 ? !!config.lint          : false,
         noCss:      config.noCss !== void 0 ? !!config.noCss        : false,
@@ -110,18 +108,6 @@ function version() {
     console.log(config.title + " version " + config.version);
 }
 
-function directory(path) {
-    if (path.length) {
-        if (/\/$/.test(path)) {
-            return path;
-        } else {
-            return path + "/";
-        }
-    } else {
-        return "./";
-    }
-}
-
 function main() {
     var Options = require("optimist");
 
@@ -159,7 +145,7 @@ function main() {
 
     var location = argv._.length ? argv._[0] : ".";
     // convert path to locations
-    location = URL.resolve(directory(process.cwd()), directory(location));
+    location = Path.resolve(process.cwd(), location);
 
     optimize(location, {
         buildLocation: argv.t || argv.target,
