@@ -17,14 +17,17 @@ describe("transform/html", function () {
     });
 
     it("continues when inline JavaScript can't be minified", function () {
-        var original = '<script>function</script><p>text</p>';
+        var original = '<html><head><script>function</script></head><body><p>text</p></body></html>';
 
         var file = new File({
             fs: mockFs,
             utf8: original,
             package: {
                 getPackage: function() {
-                    return { buildLocation: "" };
+                    return {
+                        buildLocation: "",
+                        packageDescription: {}
+                    };
                 },
                 files: {}
             }
@@ -54,7 +57,10 @@ describe("transform/html", function () {
             relativeLocation: "relative.html",
             package: {
                 getPackage: function() {
-                    return { buildLocation: "" };
+                    return {
+                        buildLocation: "",
+                        packageDescription: {}
+                    };
                 },
                 files: {}
             }
