@@ -1,3 +1,10 @@
+## 0.15.0
+
+ - Fix pathing so that Mop works on Windows.
+ - Replace JSDom with minidom. Now doesn't need to build any native modules,
+   making installation a lot simpler.
+ - Fix bundles for HTML entry points that are not at the root of the package.
+
 ### 0.14.1
 
  - Update minimum version of montage.
