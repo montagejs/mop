@@ -14,7 +14,7 @@
     "integration": "mop-integration"
   },
   "dependencies": {
-    "montage": "~0.14.6",
+    "montage": ">=0.14.6",
     "mr": "~0.15.0 || ~0.14.2 || ~0.13.0",
     "collections": "~1.0.1",
     "q": "1.0.0",
