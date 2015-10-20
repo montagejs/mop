@@ -65,18 +65,6 @@ describe("transform/css", function () {
         //expect(warnings[1]).toBe("Cannot read property 'length' of undefined");
     });
 
-    it("rebases single-quoted URIs", function () {
-        var input = "body{background:url('fail')}";
-        var output = rebaseCss(input, fileMock, {});
-        expect(output).toBe("body{background:url(pass)}");
-    });
-
-    it("rebases double-quoted URIs", function () {
-        var input = "body{background:url(\"fail\")}";
-        var output = rebaseCss(input, fileMock, {});
-        expect(output).toBe("body{background:url(pass)}");
-    });
-
     it("rebases unquoted URIs", function () {
         var input = "body{background: url(fail)}";
         var output = rebaseCss(input, fileMock, {});
