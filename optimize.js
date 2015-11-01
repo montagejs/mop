@@ -4,7 +4,6 @@ Copyright (c) 2012, Motorola Mobility LLC.
 All Rights Reserved.
 3-Clause BSD License
 </copyright> */
-
 var URL = require("url2");
 var Path = require("path");
 var build = require("./lib/build");
@@ -162,4 +161,3 @@ function noop() {}
 if (module === require.main) {
     main();
 }
-
