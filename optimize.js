@@ -152,8 +152,7 @@ function main() {
         lint: argv.l || argv.lint,
         noCss: !argv.css,
         delimiter: argv.delimiter
-    })
-    .done();
+    });
 }
 
 function noop() {}
