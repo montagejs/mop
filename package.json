@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "montage": ">=0.16.0",
-    "mr": "~0.16.0",
-    "collections": "~1.2",
-    "bluebird": "~3.0",
+    "mr": "~16.0.x",
+    "collections": "montagejs/collections#b1060f46a8ba69e200a34b02829ac93825926480",
+    "bluebird": "~3.4.x",
     "q-io": "~1.13.2",
     "url2": "~1.0.1",
     "semver": "~5.1",
