@@ -16,7 +16,6 @@
   "dependencies": {
     "montage": ">=0.16.0",
     "mr": "~16.0.x",
-    "collections": "montagejs/collections#b1060f46a8ba69e200a34b02829ac93825926480",
     "bluebird": "~3.4.x",
     "q-io": "~1.13.2",
     "url2": "~1.0.1",
@@ -31,7 +30,7 @@
     "jasmine-node": "~1.14",
     "sandboxed-module": "~2.0",
     "istanbul": "~0.4",
-    "jshint": "~2.8",
+    "jshint": "~2.9",
     "mop-integration": "git://github.com/montagejs/mop-integration.git#master"
   },
   "exclude": [
