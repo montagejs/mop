@@ -1,6 +1,6 @@
 {
   "name": "mop",
-  "version": "0.16.0",
+  "version": "16.0.0",
   "title": "Montage Optimizer",
   "description": "Optimizes Montage applications for production by minifying, to reduce file size, and creating bundles, to reduce the number of requests.",
   "keywords": [
@@ -14,7 +14,7 @@
     "integration": "mop-integration"
   },
   "dependencies": {
-    "montage": ">=0.16.0",
+    "montage": ">=16.0.0",
     "mr": "~16.0.x",
     "bluebird": "~3.4.x",
     "q-io": "~1.13.2",
