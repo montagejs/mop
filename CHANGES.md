@@ -1,3 +1,9 @@
+## 16.0.4
+- Adds mjson file support
+
+## 16.0.3
+- Fixes regression around appcache
+
 ## 0.15.0
 
  - Fix pathing so that Mop works on Windows.
