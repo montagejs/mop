@@ -106,7 +106,7 @@ function usage() {
     //console.log("    -m --manifest to force an application cache to be made");
     console.log("    -d --delimiter @ to use a different symbol");
     console.log("       --no-css to disable CSS compression");
-    console.log("       --no-cssEmbedding to disable embedding of CSS in HTML");
+    console.log("       --no-css-embedding to disable embedding of CSS in HTML");
     console.log("");
 }
 
@@ -129,14 +129,14 @@ function main() {
         "h", "help",
         "v", "version",
         "css",
-        "cssEmbedding"
+        "css-embedding"
     ])
     .default("optimize", "1")
     .alias("o", "optimize")
     .default("delimiter", "@")
     .alias("d", "delimiter")
     .default("css", true)
-    .default("cssEmbedding", true)
+    .default("css-embedding", true)
     .argv;
 
     if (argv.h || argv.help) {
@@ -161,7 +161,7 @@ function main() {
         minify: argv.optimize > 0,
         lint: argv.l || argv.lint,
         noCss: !argv.css,
-        cssEmbedding: argv.cssEmbedding,
+        cssEmbedding: argv["css-embedding"],
         delimiter: argv.delimiter
     });
 }
