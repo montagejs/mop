@@ -55,6 +55,9 @@ function optimize(location, config) {
         if (!config.out.status) {
             config.out.status = noop;
         }
+        if (!config.out.error) {
+            config.out.error = noop;
+        }
     }
 
     // mainly here so that fs can be mocked out for testing
@@ -67,11 +70,12 @@ function optimize(location, config) {
     return build(location, {
         // configurable
         buildLocation: URL.resolve(location, (config.buildLocation || "builds") + "/"),
-        minify:     config.minify !== void 0 ? !!config.minify      : true,
-        lint:       config.lint !== void 0 ? !!config.lint          : false,
-        noCss:      config.noCss !== void 0 ? !!config.noCss        : false,
-        delimiter:  config.delimiter !== void 0 ? config.delimiter  : "@",
-        out:        config.out                                      || spinner,
+        minify:       config.minify !== void 0 ? !!config.minify             : true,
+        lint:         config.lint !== void 0 ? !!config.lint                 : false,
+        noCss:        config.noCss !== void 0 ? !!config.noCss               : false,
+        cssEmbedding: config.cssEmbedding !== void 0 ? !!config.cssEmbedding : true,
+        delimiter:    config.delimiter !== void 0 ? config.delimiter         : "@",
+        out:          config.out                                      || spinner,
 
         fs:         fs,
         read:       read,
@@ -101,7 +105,8 @@ function usage() {
     //console.log("    -c --copyright to enable copyright message check");
     //console.log("    -m --manifest to force an application cache to be made");
     console.log("    -d --delimiter @ to use a different symbol");
-    console.log("       --no-css to disable CSS compression.");
+    console.log("       --no-css to disable CSS compression");
+    console.log("       --no-css-embedding to disable embedding of CSS in HTML");
     console.log("");
 }
 
@@ -123,13 +128,15 @@ function main() {
         //"b", "bundle",
         "h", "help",
         "v", "version",
-        "css"
+        "css",
+        "css-embedding"
     ])
     .default("optimize", "1")
     .alias("o", "optimize")
     .default("delimiter", "@")
     .alias("d", "delimiter")
     .default("css", true)
+    .default("css-embedding", true)
     .argv;
 
     if (argv.h || argv.help) {
@@ -154,6 +161,7 @@ function main() {
         minify: argv.optimize > 0,
         lint: argv.l || argv.lint,
         noCss: !argv.css,
+        cssEmbedding: argv["css-embedding"],
         delimiter: argv.delimiter
     });
 }
