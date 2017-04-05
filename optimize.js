@@ -64,7 +64,7 @@ function optimize(location, config) {
     var fs = config.fs || require("q-io/fs");
     function read(location) {
         var path = Location.toPath(location);
-        return readFile(path, "utf8");
+        return fs.read(path);
     }
 
     return build(location, {
