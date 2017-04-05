@@ -9,9 +9,6 @@ var Path = require("path");
 var build = require("./lib/build");
 var spinner = require("./lib/spinner");
 var Location = require("./lib/location");
-var Promise = require("bluebird");
-var readFile = Promise.promisify(require("fs").readFile);
-
 
 /**
  * Optimize the package at the given location.
