@@ -4,12 +4,12 @@ node_js:
 script: npm run $COMMAND
 env:
   - COMMAND=test
-  - COMMAND=integration MOP_VERSION=. MR_VERSION=16.0.5
-  - COMMAND=integration MOP_VERSION=. MR_VERSION=latest
-  - COMMAND=integration MOP_VERSION=. MR_VERSION="#master"
-  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=16.0.3
-  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=latest
-  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION="#master"
+  - COMMAND=integration MOP_VERSION=. MR_VERSION=16.0.5 DEBUG=true
+  - COMMAND=integration MOP_VERSION=. MR_VERSION=latest DEBUG=true
+  - COMMAND=integration MOP_VERSION=. MR_VERSION="#master" DEBUG=true
+  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=16.0.3 DEBUG=true
+  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=latest DEBUG=true
+  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION="#master" DEBUG=true
 notifications:
   irc:
     channels:
