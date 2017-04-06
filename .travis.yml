@@ -4,15 +4,10 @@ node_js:
 script: npm run $COMMAND
 env:
   - COMMAND=test
-#  - COMMAND=integration MOP_VERSION=. MR_VERSION=0.13
-#  - COMMAND=integration MOP_VERSION=. MR_VERSION=0.14
-  - COMMAND=integration MOP_VERSION=. MR_VERSION=0.15
-  - COMMAND=integration MOP_VERSION=. MR_VERSION=0.16.0
+  - COMMAND=integration MOP_VERSION=. MR_VERSION=16.0.5
   - COMMAND=integration MOP_VERSION=. MR_VERSION=latest
   - COMMAND=integration MOP_VERSION=. MR_VERSION="#master"
-#  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=0.14
-#  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=0.15
-  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=0.16.0  
+  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=16.0.3
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=latest
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION="#master"
 notifications:
