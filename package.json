@@ -19,9 +19,9 @@
     "integration": "mop-integration"
   },
   "dependencies": {
-    "montage": ">=16.0.0",
-    "mr": ">=16.0.5",
-    "bluebird": "~3.4.x",
+    "montage": "montagejs/montage#commonjs",
+    "mr": "montagejs/mr#commonjs",
+    "bluebird": "~3.5.0",
     "csso": "~1.3",
     "html-minifier": "^3.4.3",
     "jshint": "^2.9.4",
