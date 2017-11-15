@@ -19,8 +19,8 @@
     "integration": "mop-integration"
   },
   "dependencies": {
-    "montage": "montagejs/montage#commonjs",
-    "mr": "montagejs/mr#commonjs",
+    "montage": "github:montagejs/montage#commonjs",
+    "mr": "github:montagejs/mr#commonjs",
     "bluebird": "~3.5.0",
     "csso": "~1.3",
     "html-minifier": "^3.4.3",
