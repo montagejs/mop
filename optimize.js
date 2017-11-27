@@ -113,6 +113,8 @@ function version() {
 }
 
 function main() {
+
+
     var Options = require("optimist");
 
     var argv = Options
@@ -153,13 +155,23 @@ function main() {
     // convert path to locations
     location = Path.resolve(process.cwd(), location);
 
-    optimize(location, {
+    // Exit code
+    var exitCode = 0;
+    
+    return optimize(location, {
         buildLocation: argv.t || argv.target,
         minify: argv.optimize > 0,
         lint: argv.l || argv.lint,
         noCss: !argv.css,
         cssEmbedding: argv["css-embedding"],
         delimiter: argv.delimiter
+    }).then(function () {
+        console.log("Optimization done.");
+    }).catch(function (err) {
+        console.error('Optimization Failed: ', err.message, err.stack);
+        exitCode = 1;
+    }).then(function () {
+        process.exit(exitCode);
     });
 }
 
