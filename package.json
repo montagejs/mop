@@ -15,7 +15,8 @@
   "license": "BSD-3-Clause",
   "main": "optimize.js",
   "scripts": {
-    "test": "istanbul test jasmine-node -- spec && jshint optimize.js lib/",
+    "lint": "jshint .",
+    "test": "istanbul test jasmine-node -- spec",
     "integration": "mop-integration"
   },
   "dependencies": {
