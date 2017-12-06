@@ -165,7 +165,7 @@ function main() {
         noCss: !argv.css,
         cssEmbedding: argv["css-embedding"],
         delimiter: argv.delimiter
-    }).catch(function (err) {
+    }).catch(function () {
         exitCode = 1;
     }).then(function () {
         process.exit(exitCode);
