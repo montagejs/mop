@@ -1,15 +1,18 @@
 language: node_js
 node_js:
   - 4
+  - 6
+  - 8
+  - 10
 script: npm run $COMMAND
 env:
   - COMMAND=test
-  - COMMAND=integration MR_VERSION=16.0.5
-  - COMMAND=integration MR_VERSION=latest
-  - COMMAND=integration MR_VERSION="#master"
-  - COMMAND=integration MONTAGE_VERSION=16.0.3
-  - COMMAND=integration MONTAGE_VERSION=latest
-  - COMMAND=integration MONTAGE_VERSION="#master"
+#   - COMMAND=integration MR_VERSION=16.0.5
+#   - COMMAND=integration MR_VERSION=latest
+  - COMMAND=integration MR_VERSION="#commonjs"
+#   - COMMAND=integration MONTAGE_VERSION=16.0.3
+#   - COMMAND=integration MONTAGE_VERSION=latest
+  - COMMAND=integration MONTAGE_VERSION="#commonjs"
 notifications:
   irc:
     channels:
