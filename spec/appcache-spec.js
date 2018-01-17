@@ -37,7 +37,7 @@ describe("Appcache", function() {
             appcache(appPackage, config);
 
             expect(config.files["file:///build/manifest.appcache"].utf8).toEqual(
-                'CACHE MANIFEST\n#hash xxx\nindex.html\n\nNETWORK:\n*\n'
+                'CACHE MANIFEST\n#hash xxx\n\nCACHE:\nindex.html\n\nNETWORK:\n*\n'
             );
         });
 
@@ -46,7 +46,7 @@ describe("Appcache", function() {
             appcache(appPackage, config);
 
             expect(config.files["file:///build/manifest.appcache"].utf8).toEqual(
-                'CACHE MANIFEST\n#version 123\n#hash xxx\nindex.html\n\nNETWORK:\n*\n'
+                'CACHE MANIFEST\n#version 123\n#hash xxx\n\nCACHE:\nindex.html\n\nNETWORK:\n*\n'
             );
         });
 
@@ -60,7 +60,7 @@ describe("Appcache", function() {
             appcache(appPackage, config);
 
             expect(config.files["file:///build/manifest.appcache"].utf8).toEqual(
-                'CACHE MANIFEST\n#hash xxx\nindex.html\n\nFALLBACK:\nindex.html offline.html\n\nNETWORK:\n*\n'
+                'CACHE MANIFEST\n#hash xxx\n\nCACHE:\nindex.html\n\nFALLBACK:\nindex.html offline.html\n\nNETWORK:\n*\n'
             );
         });
     });
