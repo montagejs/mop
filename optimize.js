@@ -120,7 +120,7 @@ function main() {
     var argv = Options
     .boolean([
         //"f", "force",
-        //"l", "lint",
+        "l", "lint",
         //"c", "copyright",
         //"s", "shared",
         //"m", "manifest",
@@ -132,6 +132,8 @@ function main() {
     ])
     .default("optimize", "1")
     .alias("o", "optimize")
+    .default("lint", false)
+    .alias("l", "lint")
     .default("delimiter", "@")
     .alias("d", "delimiter")
     .default("css", true)
