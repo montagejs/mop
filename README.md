@@ -230,7 +230,14 @@ important:
 
     -   For the eponymous JavaScript module in a Reel, like
         `main.reel/main.js`, the corresponding HTML template file, if it
-        exists, such as `main.reel/main.html`.
+        exists, such as `main.reel/main.html`. 
+
+    -   A File can only be bundled if the file name is hyphenated lowercase.
+        For example: 
+           - `my-text-component.reel` will be bundled, but `myTextComponent.reel` will not.
+           - `my-model-object.mjson` will be bundled, but `myModelObject.mjson` will not.
+        
+        
 
 -   ``shard``: In conjunction with bundling and preloading, "shard"
     specifies a maximum number of TCP connections to dedicate to
