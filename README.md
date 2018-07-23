@@ -1,7 +1,8 @@
-[![Build Status](https://travis-ci.org/montagejs/mop.png?branch=master)](http://travis-ci.org/montagejs/mop)
+# Montage Optimizer (aka mop)
 
-Montage Optimizer
-=================
+[![npm version](https://img.shields.io/npm/v/mop.svg?style=flat&branch=master)](https://www.npmjs.com/package/montage)
+
+[![Build Status](https://travis-ci.org/montagejs/mop.png?branch=master)](http://travis-ci.org/montagejs/mop)
 
 for **Montage** ~0.14.6 and **Mr** ~0.15.0, ~0.14.2 and ~0.13.0.
 
