@@ -18,6 +18,10 @@
     "test": "istanbul test jasmine-node -- spec && jshint optimize.js lib/",
     "integration": "mop-integration"
   },
+  "engines": {
+    "node": "<=4.9.1",
+    "npm": "<=2.15.11"
+  },
   "dependencies": {
     "bluebird": "~3.4.x",
     "csso": "~1.3",
