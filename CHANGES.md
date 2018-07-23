@@ -1,3 +1,6 @@
+## 16.1.7
+- Fix Object.values|keys|clone due q-io/collections shim leak fix
+
 ## 16.1.0
 - Adds ability to gather css of all app into root html file to reduce load time
 - Adds --no-css to disable CSS compression

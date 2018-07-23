@@ -1,6 +1,6 @@
 {
   "name": "mop",
-  "version": "16.1.6",
+  "version": "16.1.7",
   "title": "Montage Optimizer",
   "description": "Optimizes Montage applications for production by minifying, to reduce file size, and creating bundles, to reduce the number of requests.",
   "keywords": [
@@ -14,9 +14,14 @@
   },
   "license": "BSD-3-Clause",
   "main": "optimize.js",
+  "bin": "optimize.js",
   "scripts": {
     "test": "istanbul test jasmine-node -- spec && jshint optimize.js lib/",
     "integration": "mop-integration"
+  },
+  "engines": {
+    "node": "<=4.9.1",
+    "npm": "<=2.15.11"
   },
   "dependencies": {
     "montage": "github:montagejs/montage#commonjs",
@@ -44,8 +49,5 @@
   "exclude": [
     "builds"
   ],
-  "bin": {
-    "mop": "optimize.js"
-  },
   "preferGlobal": true
 }
