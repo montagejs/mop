@@ -167,10 +167,7 @@ function main() {
         noCss: !argv.css,
         cssEmbedding: argv["css-embedding"],
         delimiter: argv.delimiter
-    }).then(function () {
-        console.log("Optimization done.");
-    }).catch(function (err) {
-        console.error('Optimization Failed: ', err.message, err.stack);
+    }).catch(function () {
         exitCode = 1;
     }).then(function () {
         process.exit(exitCode);
