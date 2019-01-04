@@ -157,7 +157,7 @@ function main() {
 
     // Exit code
     var exitCode = 0;
-    
+
     return optimize(location, {
         buildLocation: argv.t || argv.target,
         minify: argv.optimize > 0,
@@ -165,7 +165,8 @@ function main() {
         noCss: !argv.css,
         cssEmbedding: argv["css-embedding"],
         delimiter: argv.delimiter
-    }).catch(function () {
+    }).catch(function (err) {
+        console.error(err);
         exitCode = 1;
     }).then(function () {
         process.exit(exitCode);
