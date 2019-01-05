@@ -6,6 +6,10 @@ All Rights Reserved.
 </copyright> */
 var URL = require("url2");
 var Path = require("path");
+var chokidar = require('chokidar');
+var fs = require('fs');
+var Path = require('path');
+var EventEmitter = require('events');
 var build = require("./lib/build");
 var spinner = require("./lib/spinner");
 var Location = require("./lib/location");
@@ -58,10 +62,12 @@ function optimize(location, config) {
     }
 
     // mainly here so that fs can be mocked out for testing
-    var fs = config.fs || require("q-io/fs");
+    if (!config.fs) {
+        config.fs = require("q-io/fs");
+    }
     function read(location) {
         var path = Location.toPath(location);
-        return fs.read(path);
+        return config.fs.read(path);
     }
 
     return build(location, {
@@ -74,7 +80,7 @@ function optimize(location, config) {
         delimiter:    config.delimiter !== void 0 ? config.delimiter         : "@",
         out:          config.out                                      || spinner,
 
-        fs:         fs,
+        fs:         config.fs,
         read:       read,
 
         // non-configurable
@@ -91,6 +97,72 @@ function optimize(location, config) {
     //force: !!force,
 }
 
+/**
+ * Watch the package at the given location, recompiling every time any non-ignored
+ * files are changed.
+ *
+ * The following files will not trigger a recompilation:
+ * - The .git/ directory
+ * - The config.buildLocation directory (default ./builds)
+ * - Any other paths listed in `location`/.gitignore, if the file exists
+ *
+ * @param {string} location An absolute path to a directory containing an app
+ * to optimize.
+ * @param {Object}  [config] Configuration for optimization.
+ * @return {EventEmitter} An emitter that emits a "willCompile" event when
+ * compilation starts, and a "didCompile" event when compilation ends.
+ */
+function watch(location, config) {
+    var buildLocation = config.buildLocation || "builds",
+        ignored = readGitIgnoredPaths(location),
+        emitter = new EventEmitter(),
+        watcher;
+
+    // Prevent recompiling due to compilation
+    if (ignored.indexOf(buildLocation) === -1) {
+        ignored.push(buildLocation);
+    }
+
+    function optimizeOnce() {
+        emitter.emit('willCompile');
+        optimize(location, config).then(function (result) {
+            emitter.emit('didCompile', result);
+        }, function (error) {
+            emitter.emit('error', error);
+        });
+    }
+
+    watcher = chokidar.watch(location, {
+        persistent: true, // keep the process going after 'ready' event
+        ignoreInitial: true, // only dispatch events for new changes
+        ignored: ignored,
+        cwd: location
+    });
+
+    watcher.on('all', optimizeOnce);
+    optimizeOnce();
+
+    return emitter;
+}
+
+function readGitIgnoredPaths(location) {
+    var ignored = [".git"]; // .git is always ignored by git
+    var gitIgnorePath = Path.join(location, ".gitignore");
+    var gitIgnoreFile;
+    if (fs.existsSync(gitIgnorePath)) {
+        gitIgnoreFile = fs.readFileSync(Path.join(location, ".gitignore"));
+        ignored = ignored.concat(
+            gitIgnoreFile
+                .toString("utf-8")
+                .split("\n")
+                .filter(function (path) {
+                    return !!path;
+                })
+        );
+    }
+    return ignored;
+}
+
 function usage() {
     console.log("Usage: mop [options] [<application> ...]");
     console.log("");
@@ -104,6 +176,7 @@ function usage() {
     console.log("    -d --delimiter @ to use a different symbol");
     console.log("       --no-css to disable CSS compression");
     console.log("       --no-css-embedding to disable embedding of CSS in HTML");
+    console.log("    -w --watch to automatically recompile when you save a file");
     console.log("");
 }
 
@@ -113,8 +186,6 @@ function version() {
 }
 
 function main() {
-
-
     var Options = require("optimist");
 
     var argv = Options
@@ -128,7 +199,8 @@ function main() {
         "h", "help",
         "v", "version",
         "css",
-        "css-embedding"
+        "css-embedding",
+        "w", "watch"
     ])
     .default("optimize", "1")
     .alias("o", "optimize")
@@ -138,6 +210,8 @@ function main() {
     .alias("d", "delimiter")
     .default("css", true)
     .default("css-embedding", true)
+    .default("watch", false)
+    .alias("w", "watch")
     .argv;
 
     if (argv.h || argv.help) {
@@ -159,19 +233,26 @@ function main() {
 
     // Exit code
     var exitCode = 0;
-    
-    return optimize(location, {
+
+    var config = {
         buildLocation: argv.t || argv.target,
         minify: argv.optimize > 0,
         lint: argv.l || argv.lint,
         noCss: !argv.css,
         cssEmbedding: argv["css-embedding"],
         delimiter: argv.delimiter
-    }).catch(function () {
-        exitCode = 1;
-    }).then(function () {
-        process.exit(exitCode);
-    });
+    };
+
+    if (argv.w || argv.watch) {
+        watch(location, config);
+    } else {
+        return optimize(location, config)
+        .catch(function () {
+            exitCode = 1;
+        }).then(function () {
+            process.exit(exitCode);
+        });
+    }
 }
 
 function noop() {}
