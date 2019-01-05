@@ -1,15 +1,20 @@
 language: node_js
 node_js:
   - 4
+  - 6
+  - 8
+  - 9
 script: npm run $COMMAND
 env:
   - COMMAND=test
   - COMMAND=integration MOP_VERSION=. MR_VERSION=16.0.5
   - COMMAND=integration MOP_VERSION=. MR_VERSION=latest
   - COMMAND=integration MOP_VERSION=. MR_VERSION="#master"
+  - COMMAND=integration MOP_VERSION=. MR_VERSION="#commonjs"
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=16.0.3
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION=latest
   - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION="#master"
+  - COMMAND=integration MOP_VERSION=. MONTAGE_VERSION="#commonjs"
 notifications:
   irc:
     channels:
