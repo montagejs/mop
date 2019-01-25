@@ -8,8 +8,8 @@ Releasing
      - `rm -rf node_modules; npm install` to make sure you're testing the
         latest deps
      - `npm test`
-     - `MOP_VERSION=. MR_VERSION=latest npm run integration`
-     - `MOP_VERSION=. MONTAGE_VERSION=latest npm run integration`
+     - `MR_VERSION=latest npm run integration`
+     - `MONTAGE_VERSION=latest npm run integration`
      - these should have been covered by Travis before any code was merged, but
        nice to double check.
  * Docs

@@ -17,7 +17,7 @@
   "bin": "optimize.js",
   "scripts": {
     "test": "istanbul test jasmine-node -- spec && jshint optimize.js lib/",
-    "integration": "mop-integration"
+    "integration": "MOP_VERSION=. mop-integration"
   },
   "engines": {
     "node": "<=4.9.1",
