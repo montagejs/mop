@@ -9,6 +9,7 @@ var Path = require("path");
 var build = require("./lib/build");
 var spinner = require("./lib/spinner");
 var Location = require("./lib/location");
+var mr = require("mr/require");
 
 /**
  * Optimize the package at the given location.
@@ -64,22 +65,26 @@ function optimize(location, config) {
         return fs.read(path);
     }
 
-    return build(location, {
-        // configurable
-        buildLocation: URL.resolve(location, (config.buildLocation || "builds") + "/"),
-        minify:       config.minify !== void 0 ? !!config.minify             : true,
-        lint:         config.lint !== void 0 ? !!config.lint                 : false,
-        noCss:        config.noCss !== void 0 ? !!config.noCss               : false,
-        cssEmbedding: config.cssEmbedding !== void 0 ? !!config.cssEmbedding : true,
-        delimiter:    config.delimiter !== void 0 ? config.delimiter         : "@",
-        out:          config.out                                      || spinner,
+    return mr.loadPackageLock({ location: location })
+    .then(function (packageLock) {
+        return build(location, {
+            // configurable
+            buildLocation: URL.resolve(location, (config.buildLocation || "builds") + "/"),
+            minify:       config.minify !== void 0 ? !!config.minify             : true,
+            lint:         config.lint !== void 0 ? !!config.lint                 : false,
+            noCss:        config.noCss !== void 0 ? !!config.noCss               : false,
+            cssEmbedding: config.cssEmbedding !== void 0 ? !!config.cssEmbedding : true,
+            delimiter:    config.delimiter !== void 0 ? config.delimiter         : "@",
+            out:          config.out                                      || spinner,
 
-        fs:         fs,
-        read:       read,
+            fs:         fs,
+            read:       read,
 
-        // non-configurable
-        overlays: ["browser"],
-        production: true
+            // non-configurable
+            overlays: ["browser"],
+            production: true,
+            packageLock: packageLock
+        });
     });
 
     // Once implemented but currently disabled options:
