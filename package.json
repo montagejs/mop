@@ -41,10 +41,10 @@
     "url2": "~1.0.1"
   },
   "devDependencies": {
-    "jasmine-node": "~1.14",
-    "sandboxed-module": "~2.0",
     "istanbul": "~0.4",
-    "mop-integration": "git://github.com/montagejs/mop-integration.git#master"
+    "jasmine-node": "~1.14",
+    "mop-integration": "git://github.com/montagejs/mop-integration.git#master",
+    "sandboxed-module": "~2.0"
   },
   "exclude": [
     "builds"
