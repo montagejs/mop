@@ -1,17 +1,13 @@
 language: node_js
 node_js:
-  - 4
+  - 6
+  - 8
+  - 10
 script: npm run $COMMAND
 env:
-# TODO: We have a transitive dependency for testing that does not work with
-# node 4 anymore, uncomment this once we switch to node 6+
-#   - COMMAND=test
-  - COMMAND=integration MR_VERSION=16.0.5
-  - COMMAND=integration MR_VERSION=latest
-  - COMMAND=integration MR_VERSION="#master"
-  - COMMAND=integration MONTAGE_VERSION=16.0.3
-  - COMMAND=integration MONTAGE_VERSION=latest
-  - COMMAND=integration MONTAGE_VERSION="#master"
+  - COMMAND=test
+  - COMMAND=integration MR_VERSION="#feature/npm3"
+  - COMMAND=integration MONTAGE_VERSION="#feature/npm3"
 jobs:
     include:
       - stage: deploy
