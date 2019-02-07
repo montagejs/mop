@@ -10,6 +10,21 @@ env:
   - COMMAND=integration MONTAGE_VERSION=16.0.3
   - COMMAND=integration MONTAGE_VERSION=latest
   - COMMAND=integration MONTAGE_VERSION="#master"
+jobs:
+    include:
+        - stage: deploy
+        node_js: 4
+        script: skip
+        env:
+        deploy:
+            provider: npm
+            email: "${NPM_EMAIL}"
+            api_key: "${NPM_API_KEY}"
+            on:
+                tags: true
+stages:
+  - test
+  - deploy
 notifications:
   irc:
     channels:
