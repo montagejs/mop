@@ -12,7 +12,7 @@ env:
   - COMMAND=integration MONTAGE_VERSION="#master"
 jobs:
     include:
-        - stage: deploy
+      - stage: deploy
         node_js: 4
         script: skip
         env:
