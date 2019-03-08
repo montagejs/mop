@@ -1,6 +1,6 @@
 {
   "name": "mop",
-  "version": "16.1.7",
+  "version": "16.1.8",
   "title": "Montage Optimizer",
   "description": "Optimizes Montage applications for production by minifying, to reduce file size, and creating bundles, to reduce the number of requests.",
   "keywords": [
