@@ -6,8 +6,10 @@ node_js:
 script: npm run $COMMAND
 env:
   - COMMAND=test
-  - COMMAND=integration MR_VERSION="#feature/npm3"
-  - COMMAND=integration MONTAGE_VERSION="#feature/npm3"
+  - COMMAND=integration MR_VERSION="#master"
+  - COMMAND=integration MR_VERSION="18.0.0"
+  - COMMAND=integration MONTAGE_VERSION="#master"
+  - COMMAND=integration MONTAGE_VERSION="#18.0.0"
 jobs:
     include:
       - stage: deploy
